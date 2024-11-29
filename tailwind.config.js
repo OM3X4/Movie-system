@@ -9,7 +9,8 @@ export default {
         colors:{
           primary : "#1c1e31",
           secondry : "#282b45",
-          purple : "#9747ff"
+          purple : "#9747ff",
+          dark_background : "#0b0c17",
         }
       },
     },
