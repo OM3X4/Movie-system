@@ -32,8 +32,8 @@ function Home() {
             <h1 className="text-5xl text-white font-semibold mb-14">Our Genres</h1>
             <div className=" flex items-center justify-center gap-10">
                 <div className=" flex">
-                    <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
-                        <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
+                    <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group hover:scale-110">
+                        <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:scale-110 transition-all duration-200 ease-in">
                             <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
                             <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
                             <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
@@ -43,8 +43,8 @@ function Home() {
                     </div>
                 </div>
                 <div className=" flex">
-                    <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
-                        <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
+                    <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group hover:scale-110">
+                        <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:scale-110 transition-all duration-200 ease-in">
                             <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
                             <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
                             <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
@@ -54,8 +54,8 @@ function Home() {
                     </div>
                 </div>
                 <div className=" flex">
-                    <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
-                        <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
+                    <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group hover:scale-110">
+                        <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:scale-110 transition-all duration-200 ease-in">
                             <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
                             <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
                             <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
@@ -65,8 +65,8 @@ function Home() {
                     </div>
                 </div>
                 <div className=" flex">
-                    <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
-                        <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
+                    <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group hover:scale-110">
+                        <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:scale-110 transition-all duration-200 ease-in">
                             <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
                             <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
                             <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
@@ -83,12 +83,12 @@ function Home() {
             <div className=" flex items-center justify-center gap-10">
                 { sortDate.slice(0 , 4).map(movie => {
                     return(
-                        <div className=" flex">
-                            <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
-                                <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
-                                    <img src={movie.thumbnail} alt="" />
+                        <div className=" flex h-[300px]">
+                            <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-between hover:bg-purple duration-300 transition-all cursor-pointer group hover:scale-110">
+                                <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:scale-110 transition-all duration-200 ease-in mt-8">
+                                    <img src={movie.thumbnail} alt=""  className=" rounded-xl"/>
                                 </div>
-                                <h1 className=" text-white text-xl font-semibold">Action</h1>
+                                <div className=" bg-gray-300 px-4 py-1 text-xs rounded-full font-semibold text-black ">{movie.year}</div>
                             </div>
                         </div>
                     )
