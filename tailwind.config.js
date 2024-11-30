@@ -11,6 +11,9 @@ export default {
           secondry : "#282b45",
           purple : "#9747ff",
           dark_background : "#0b0c17",
+          search: "#27293c",
+          navbar: "#181a2b",
+          
         }
       },
     },
