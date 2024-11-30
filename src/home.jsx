@@ -4,6 +4,7 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { AiFillPlayCircle } from "react-icons/ai"; 
 import React from 'react';
 import { data } from "../public/Data/Movies";
+const sortDate = data.sort((a , b) => b.year - a.year);
 
 function Home() {
     return (
@@ -27,51 +28,71 @@ function Home() {
                 </div>
             </div>
         {/* ----------Genres---------- */}
-        <div className=" pt-20 px-20 overflow-hidden w-full mb-96">
+        <div className=" pt-20 px-20 overflow-hidden w-full mb-10">
             <h1 className="text-5xl text-white font-semibold mb-14">Our Genres</h1>
-            <div className=" flex">
-                <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
-                    <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+            <div className=" flex items-center justify-center gap-10">
+                <div className=" flex">
+                    <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
+                        <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                        </div>
+                        <h1 className=" text-white text-xl font-semibold">Action</h1>
                     </div>
-                    <h1 className=" text-white text-xl font-semibold">Action</h1>
+                </div>
+                <div className=" flex">
+                    <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
+                        <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                        </div>
+                        <h1 className=" text-white text-xl font-semibold">Aventure</h1>
+                    </div>
+                </div>
+                <div className=" flex">
+                    <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
+                        <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                        </div>
+                        <h1 className=" text-white text-xl font-semibold">Comedy</h1>
+                    </div>
+                </div>
+                <div className=" flex">
+                    <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
+                        <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                            <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
+                        </div>
+                        <h1 className=" text-white text-xl font-semibold">Drama</h1>
+                    </div>
                 </div>
             </div>
-            <div className=" flex">
-                <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
-                    <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                    </div>
-                    <h1 className=" text-white text-xl font-semibold">Aventure</h1>
-                </div>
-            </div>
-            <div className=" flex">
-                <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
-                    <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                    </div>
-                    <h1 className=" text-white text-xl font-semibold">Comedy</h1>
-                </div>
-            </div>
-            <div className=" flex">
-                <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
-                    <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                        <img src="placeHolder.png" alt="" className=" w-[45%] rounded-md"/>
-                    </div>
-                    <h1 className=" text-white text-xl font-semibold">Drama</h1>
-                </div>
+        </div>
+        {/* ---------------- new releases ---------------- */}
+        <div className=" pt-20 px-20 overflow-hidden w-full mb-96">
+            <h1 className="text-5xl text-white font-semibold mb-14">New Releases</h1>
+            <div className=" flex items-center justify-center gap-10">
+                { sortDate.slice(0 , 4).map(movie => {
+                    return(
+                        <div className=" flex">
+                            <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-center hover:bg-purple duration-300 transition-all cursor-pointer group">
+                                <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:w-[8.8rem] transition-all duration-200 ease-in">
+                                    <img src={movie.thumbnail} alt="" />
+                                </div>
+                                <h1 className=" text-white text-xl font-semibold">Action</h1>
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     </>

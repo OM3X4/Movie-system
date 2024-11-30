@@ -19261,7 +19261,106 @@ export const data = [
     "href": "Avengers:_Endgame",
     "extract": "Avengers: Endgame concludes the Marvel Cinematic Universe's Infinity Saga, following the Avengers' efforts to undo the devastation caused by Thanos.",
     "thumbnail" : "https://w0.peakpx.com/wallpaper/632/50/HD-wallpaper-poster-of-avengers-endgame-movie-thumbnail.jpg"
-  }
+  },
+    {
+      "title": "Dune: Part Two",
+      "year": 2024,
+      "cast": ["Timothée Chalamet", "Zendaya", "Rebecca Ferguson"],
+      "genres": ["Sci-Fi", "Adventure"],
+      "href": "Dune_Part_Two",
+      "extract": "Continuation of the epic saga as Paul Atreides rises to fulfill his destiny.",
+      "thumbnail": "https://m.media-amazon.com/images/I/81ZMkn8HGBL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+      "title": "Mission: Impossible – Dead Reckoning Part Two",
+      "year": 2024,
+      "cast": ["Tom Cruise", "Hayley Atwell", "Simon Pegg"],
+      "genres": ["Action", "Thriller"],
+      "href": "Mission_Impossible_Dead_Reckoning_Part_Two",
+      "extract": "Ethan Hunt races to stop a global conspiracy threatening humanity.",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqpTVOUDxnNvTANwLQDEU2v_bJ9tGw8BAK9g&s"
+    },
+    {
+      "title": "Joker: Folie à Deux",
+      "year": 2024,
+      "cast": ["Joaquin Phoenix", "Lady Gaga"],
+      "genres": ["Drama", "Musical"],
+      "href": "Joker_Folie_a_Deux",
+      "extract": "A dark and twisted exploration of Arthur Fleck and Harley Quinn.",
+      "thumbnail": "https://m.media-amazon.com/images/M/MV5BNTRlNmU1NzEtODNkNC00ZGM3LWFmNzQtMjBlMWRiYTcyMGRhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "title": "Spider-Man: Beyond the Spider-Verse",
+      "year": 2024,
+      "cast": ["Shameik Moore", "Hailee Steinfeld"],
+      "genres": ["Animation", "Superhero"],
+      "href": "Spider_Man_Beyond_the_Spider_Verse",
+      "extract": "Miles Morales’ multidimensional adventure continues.",
+      "thumbnail": "https://m.media-amazon.com/images/M/MV5BZGZhMmE5OTYtMjM3Ny00NTVmLTgwZmEtZDY4YmE3MzQwN2ViXkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+      "title": "Oppenheimer Chronicles",
+      "year": 2024,
+      "cast": ["Cillian Murphy", "Florence Pugh"],
+      "genres": ["Historical Drama"],
+      "href": "Oppenheimer_Chronicles",
+      "extract": "Untold stories from the Manhattan Project and the aftermath of Oppenheimer's decisions.",
+      "thumbnail": "https://m.media-amazon.com/images/M/MV5BN2JkMDc5MGQtZjg3YS00NmFiLWIyZmQtZTJmNTM5MjVmYTQ4XkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+      "title": "Fast X: Finale",
+      "year": 2024,
+      "cast": ["Vin Diesel", "Jason Momoa"],
+      "genres": ["Action", "Adventure"],
+      "href": "Fast_X_Finale",
+      "extract": "The ultimate showdown for Dominic Toretto and his family.",
+      "thumbnail": "https://static1.srcdn.com/wordpress/wp-content/uploads/2023/03/fast-x-poster.jpg"
+    },
+    {
+      "title": "Barbie 2",
+      "year": 2024,
+      "cast": ["Margot Robbie", "Ryan Gosling"],
+      "genres": ["Comedy", "Fantasy"],
+      "href": "Barbie_2",
+      "extract": "A sequel exploring new adventures in Barbie Land.",
+      "thumbnail": "https://static0.srcdn.com/wordpress/wp-content/uploads/2023/07/barbie-movie-cover.jpg"
+    },
+    {
+      "title": "The Lion King: Origins",
+      "year": 2024,
+      "cast": ["Donald Glover", "Beyoncé"],
+      "genres": ["Animation", "Adventure"],
+      "href": "The_Lion_King_Origins",
+      "extract": "A prequel to the original Lion King, exploring Mufasa's rise to power.",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj51hcAfg2AlJLrkU67kLvyq52YKCk_E4mLA&s"
+    },
+    {
+      "title": "Deadpool 3",
+      "year": 2024,
+      "cast": ["Ryan Reynolds", "Hugh Jackman"],
+      "genres": ["Action", "Comedy"],
+      "href": "Deadpool_3",
+      "extract": "Deadpool teams up with Wolverine to face a new threat to the multiverse.",
+      "thumbnail": "https://posterspy.com/wp-content/uploads/2022/10/DEADPOOL-3-POSTER-min.jpg"
+    },
+    {
+      "title": "How to Train Your Dragon: The Hidden World",
+      "year": 2024,
+      "cast": ["Jay Baruchel", "America Ferrera"],
+      "genres": ["Animation", "Adventure"],
+      "href": "How_to_Train_Your_Dragon_The_Hidden_World",
+      "extract": "Hiccup and Toothless uncover new dragon species in a hidden world.",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUTAwlxyJRJ3s5iNXHyytRZYKMkn6YM-_ydw&s"
+    },
+    {
+      "title": "John Wick: Chapter 5",
+      "year": 2024,
+      "cast": ["Keanu Reeves", "Donnie Yen"],
+      "genres": ["Action", "Thriller"],
+      "href": "John_Wick_Chapter_5",
+      "extract": "John Wick faces his final battle against the criminal underworld.",
+      "thumbnail": "https://i.pinimg.com/736x/24/83/62/248362b83090e77d104dc9d0b98a0e58.jpg"
+    },
 ]
 
-
+console.log(data.length)

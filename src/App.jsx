@@ -47,7 +47,7 @@ function App() {
       {/* ------nav bar ------- */}
       <div className=''>
         <div className=' h-[10vh] w-[85vw] ml-[15vw] bg-navbar border-l border-white flex items-center justify-center gap-5'>
-            <input type="text" placeholder="Search for Movies , Shows..." className=" bg-search text-white pr-80 focus:pr-96 pl-5 py-2 rounded-full transition-all duration-100"/>
+            <input type="text" placeholder="Search for Movies , Shows..." className=" bg-search text-white w-[35vw] focus:w-[40vw] pr-5 pl-5 py-2 rounded-full transition-all duration-100"/>
             <AiFillBell className=" text-white text-2xl hover:text-purple duration-100 transition-all cursor-pointer ml-32"/>
             <CgProfile className=" text-2xl text-white"/>
         </div>
