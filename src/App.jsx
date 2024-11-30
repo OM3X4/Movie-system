@@ -14,10 +14,10 @@ function App() {
   return (
     <>
 
-    <div className='h-screen bg-dark_background flex'>
+    <div className='h-full bg-dark_background flex overflow-x-hidden'>
       {/* ---side panel--- */}
       <div className=' bg-secondry w-[15vw] h-screen fixed brightness-90 flex items-center flex-col py-12'>
-        <h1 className="text-white text-3xl font-bold mb-12">Tasteful Picks</h1>
+        <h1 className="text-white text-3xl font-bold mb-12 ml-3 lg:ml-0">Tasteful Picks</h1>
         <p className=" self-start ml-5 mb-3 text-gray-200">Menu</p>
         <div className="flex items-center text-2xl text-white font-medium self-start ml-5 mb-3 hover:my-2 transition-all duration-100">
           <div className="flex items-center justify-between hover:text-purple cursor-pointer duration-100 transition-all">
@@ -25,7 +25,7 @@ function App() {
             <h1>Home</h1>
           </div>
         </div>
-        <div className="flex items-center text-2xl text-white font-medium self-start ml-5 mb-3 hover:my-2 transition-all duration-100">
+        <div className="flex items-center text-2xl text-white font-medium self-start ml-5 mb-3 hover:my-2 transition-all duration-100 w-full">
           <div className="flex items-center justify-between hover:text-purple cursor-pointer duration-100 transition-all">
             <BsCameraReels className=" mr-2"/>
             <h1>Movie</h1>
