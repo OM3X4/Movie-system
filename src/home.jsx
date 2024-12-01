@@ -4,7 +4,9 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { AiFillPlayCircle } from "react-icons/ai"; 
 import React from 'react';
 import { data } from "../public/Data/Movies";
+import { actors } from "../public/Data/actors";
 const sortDate = data.sort((a , b) => b.year - a.year);
+
 
 function Home() {
     return (
@@ -78,23 +80,41 @@ function Home() {
             </div>
         </div>
         {/* ---------------- new releases ---------------- */}
-        <div className=" pt-20 px-20 overflow-hidden w-full mb-96">
+        <div className=" pt-20 px-20 overflow-hidden w-full ">
             <h1 className="text-5xl text-white font-semibold mb-14">New Releases</h1>
             <div className=" flex items-center justify-center gap-10">
                 { sortDate.slice(0 , 4).map(movie => {
                     return(
                         <div className=" flex h-[300px]">
-                            <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-between hover:bg-purple duration-300 transition-all cursor-pointer group hover:scale-110">
-                                <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:scale-110 transition-all duration-200 ease-in mt-8">
+                            <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-between hover:bg-purple duration-300 transition-all cursor-pointer group hover:scale-105">
+                                <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:scale-105 transition-all duration-200 ease-in mt-8">
                                     <img src={movie.thumbnail} alt=""  className=" rounded-xl"/>
                                 </div>
-                                <div className=" bg-gray-300 px-4 py-1 text-xs rounded-full font-semibold text-black ">{movie.year}</div>
+                                <div className=" bg-zinc-800 px-4 py-1 text-sm rounded-full font-bold text-gray-300 ">Released at {movie.year}</div>
                             </div>
                         </div>
                     )
                 })}
             </div>
         </div>
+        {/* ----------------Actors----------------- */}
+        <div className="mx-20 mt-32">
+            <h1 className=" text-white font-semibold text-5xl mb-7">Characters</h1>
+            <div className=" flex items-center justify-center gap-8 mb-20">
+                {actors.map(actor => {
+                    return (
+                        <div className=" size-44 overflow-hidden rounded-full hover:scale-[118%] transition-all cursor-pointer">
+                            <img src={actor.img} alt="" className="object-cover"/>
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
+        {/* -------------Footer------------ */}
+        <div className=" text-white h-20 w-full bg-search flex items-center justify-center">
+            ©All Copy Rights Reserved
+        </div>
+
     </>
     );
 }
