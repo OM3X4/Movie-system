@@ -13,6 +13,8 @@ export default {
           dark_background : "#0b0c17",
           search: "#27293c",
           navbar: "#181a2b",
+          imdb: "#c19d0a",
+          
           
         }
       },

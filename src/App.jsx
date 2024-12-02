@@ -1,6 +1,6 @@
+/* eslint-disable */
 import { CgProfile } from "react-icons/cg"; 
 import { AiFillBell } from "react-icons/ai"; 
-/* eslint-disable */
 import { AiFillHome } from "react-icons/ai"; 
 import { FaTheaterMasks } from "react-icons/fa"; 
 import { FaTv } from "react-icons/fa"; 
@@ -8,6 +8,7 @@ import { BsCameraReels } from "react-icons/bs";
 import { useState } from 'react'
 import Login from './Login'
 import Home from './home'
+import Search from './search'
 
 function App() {
 
@@ -52,7 +53,7 @@ function App() {
             <CgProfile className=" text-2xl text-white"/>
         </div>
         <div className='flex-1 ml-[15vw]'>
-          <Home />
+          <Search />
         </div>
       </div>
     </div>
