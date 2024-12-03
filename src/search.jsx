@@ -1,8 +1,8 @@
+/* eslint-disable */
 import { BiBookmark } from "react-icons/bi"; 
 import { AiOutlineInfoCircle } from "react-icons/ai"; 
 import { SiRottentomatoes } from "react-icons/si"; 
 import { FaImdb } from "react-icons/fa"; 
-/* eslint-disable */
 import React from 'react';
 import { data } from '../public/Data/Movies'
 
