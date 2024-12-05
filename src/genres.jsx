@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState } from 'react';
 const genres = [
     "Comedy",
     "Mystery",
@@ -22,6 +22,30 @@ const genres = [
 ]
 
 function Genres() {
+
+    const [buttons , setButtons] = useState({
+        "Comedy" : false,
+        "Mystery" :false,
+        "Thriller":false,
+        "Crime":false , 
+        "Horror":false ,
+        "Action":false , 
+        "Adventure":false ,
+        "Fantasy": false,
+        "Darma": false,
+        "War": false,
+        "Superhero": false,
+        "Supernatural": false,
+        "Western": false,
+        "Romance": false,
+        "Sports": false,
+        "Documentary": false,
+        "Animation": false,
+        "Science Fiction": false
+    })
+
+
+
     return (
     <>
         <div className=' mt-10 mx-24'>
@@ -30,9 +54,9 @@ function Genres() {
                 {
                     genres.map((Genre) => {
                         return(
-                            <div className=' text-white font-semibold bg-secondry px-3 py-3 mx-3 my-5 rounded-tr-xl rounded-bl-xl rounded-tl-sm rounded-br-sm'>
+                            <button className={` text-white font-semibold bg-${buttons.Genre ? "purple" : "secondry"} px-3 py-3 mx-3 my-5 rounded-tr-xl rounded-bl-xl rounded-tl-sm rounded-br-sm hover:scale-110 hover:bg-purple transition-all cursor-pointer`}>
                                 {Genre}
-                            </div>
+                            </button>
                         )
                     })
                 }
