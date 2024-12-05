@@ -54,7 +54,7 @@ function App() {
             <CgProfile className=" text-2xl text-white"/>
         </div>
         <div className='flex-1 ml-[15vw]'>
-          <Search />
+          <Movie />
         </div>
       </div>
     </div>
