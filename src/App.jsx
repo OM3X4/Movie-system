@@ -10,6 +10,7 @@ import Login from './Login'
 import Home from './home'
 import Movie from "./Movie";
 import Search from './search'
+import Genres from "./genres";
 
 function App() {
 
@@ -54,7 +55,7 @@ function App() {
             <CgProfile className=" text-2xl text-white"/>
         </div>
         <div className='flex-1 ml-[15vw]'>
-          <Movie />
+          <Genres />
         </div>
       </div>
     </div>

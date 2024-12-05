@@ -19361,5 +19361,6 @@ export const data = [
       "extract": "John Wick faces his final battle against the criminal underworld.",
       "thumbnail": "https://i.pinimg.com/736x/24/83/62/248362b83090e77d104dc9d0b98a0e58.jpg"
     },
+    
 ]
 
