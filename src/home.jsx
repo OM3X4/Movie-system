@@ -5,6 +5,7 @@ import { AiFillPlayCircle } from "react-icons/ai";
 import React from 'react';
 import { data } from "../public/Data/Movies";
 import { actors } from "../public/Data/actors";
+import { Link } from "react-router";
 const sortDate = data.sort((a , b) => b.year - a.year);
 
 

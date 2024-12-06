@@ -5,10 +5,16 @@ import { SiRottentomatoes } from "react-icons/si";
 import { FaImdb } from "react-icons/fa"; 
 import React, { useEffect } from 'react';
 import { data } from '../public/Data/editedData'
+import { useParams } from "react-router";
 
 
 
 function Search() {
+
+
+    let { search } = useParams();
+
+
     useEffect(() => {
         console.log(data.slice(0 , 10))
     })
@@ -16,9 +22,23 @@ function Search() {
     <>
         <div className="flex flex-wrap mx-20  items-center justify-center mt-20 mb-96">
             {
-                data.slice(0 , 10).map((movie) => {
+                data.filter((movie) => {
+                    if(movie.title.toLowerCase().includes(search.toLowerCase())){
+                        return true;
+                    }else if(search.toLowerCase().includes(movie.title.toLowerCase())){
+                        return true;
+                    }else if(movie.genres.some(item => item.includes(search.toLowerCase()))){
+                        return true;
+                    }else if( movie.extract ? movie.extract.toLowerCase().includes(search) : false){
+                        return true;
+                    }else if( search == movie.year){
+                        return true;
+                    }else if(movie.cast.some(item => item.toLowerCase().includes(search.toLowerCase()))){
+                        return true;
+                    }
+                }).slice(0 , 10).map((movie) => {
                     return(
-                        <div className="relative flex items-center justify-center h-52 w-[30rem] overflow-hidden p-5 bg-secondry rounded-xl  hover:scale-125 hover:delay-[1000ms] hover:bg-purple transition-all group m-5">
+                        <div className="relative flex items-center justify-center h-52 w-[30rem] overflow-hidden p-5 bg-secondry rounded-xl  hover:scale-125 hover:delay-[1000ms] hover:bg-purple transition-all group m-5 hover:z-50 cursor-pointer">
                                     <div className=' flex gap-5 items-center justify-center'>
                                         <img src={movie.thumbnail ? movie.thumbnail : "https://ih1.redbubble.net/image.4905811447.8675/flat,750x,075,f-pad,750x1000,f8f8f8.jpg"} className=" object-cover max-w-[11rem] max-h-[11rem] rounded-xl"/>
                                         <div className="">
