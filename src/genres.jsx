@@ -1,6 +1,9 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import { actors } from './DataEditing/actors';
+import { Link } from 'react-router';
+import { useSearchParams } from 'react-router';
+
 const genres = [
     "Comedy",
     "Mystery",
@@ -10,7 +13,7 @@ const genres = [
     "Action",
     "Adventure",
     "Fantasy",
-    "Darma",
+    "Drama",
     "War",
     "Superhero",
     "Supernatural",
@@ -46,6 +49,9 @@ function Genres() {
         "Science Fiction": false
     })
     const [actor , setActor] = useState("0")
+    const [Genres , setGenres] = useState([]);
+
+
 
     function handleYear(e){
         setYear(e.target.value)
@@ -54,12 +60,13 @@ function Genres() {
     function toggleButton(button){
         const copy = {...buttons};
         copy[button] = !buttons[button];
+        if(!Genres.includes(button) && copy[button]){
+            setGenres(prev => [...prev , button])
+        }else if(!Genres.includes(button)){
+            setGenres(prev => prev.pop(button))
+        }
         setButtons(copy)
     }
-
-    useEffect(() => {
-        console.log(actors)
-    })
 
 
 
@@ -97,15 +104,15 @@ function Genres() {
                 </div>
                 <div className=''>
                     <h1 className=' text-4xl text-white mb-5'>Actor</h1>
-                    <input className=" px-3 py-2 bg-secondry"
+                    <input className="bg-secondry py-3 px-3 font-semibold caret-white  rounded-tr-xl rounded-bl-xl rounded-tl-sm rounded-br-sm outline-none focus:border-purple focus:border text-white"
                         type="text"
                         list="actorsList"
                         value={actor}
                         onChange={(e) => setActor(e.target.value)}
                         placeholder="Choose an actor"
-                        className="actor-input"
                     />
                     <datalist id="actorsList">
+                        <option value="Any">Any</option>
                         {actors.map((actorName, index) => (
                         <option key={index} value={actorName} />
                         ))}
@@ -113,7 +120,9 @@ function Genres() {
                 </div>
             </div>
             <div className=' flex items-center justify-center'>
-                <button className=' text-5xl text-white bg-secondry w-[100%] mx-auto py-3 font-bold mb-28 rounded-2xl hover:bg-purple transition-all'>Search</button>
+                <Link to={`/search/?${(year != "0"  && year != null) ? ("year=" + year + "&") : ""}${Genres.length > 0 ? "genres=" + [...Genres].map(genre => genre) + "&" : ""}`}>
+                    <button className=' text-5xl text-white bg-secondry w-[100%] mx-auto py-3 font-bold mb-28 rounded-2xl hover:bg-purple transition-all'>Search</button>
+                </Link>
             </div>
         </div>
     </>

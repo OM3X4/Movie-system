@@ -3,57 +3,95 @@ import { BiBookmark } from "react-icons/bi";
 import { AiOutlineInfoCircle } from "react-icons/ai"; 
 import { SiRottentomatoes } from "react-icons/si"; 
 import { FaImdb } from "react-icons/fa"; 
-import React, { useEffect } from 'react';
+import React, { useEffect , useState } from 'react';
 import { data } from '../public/Data/editedData'
-import { useParams } from "react-router";
+import { useParams , useSearchParams } from "react-router";
+import { actors } from "./DataEditing/actors";
 
 
 
 function Search() {
 
 
-    let { search } = useParams();
+    const [numberOfItems , setNumberOfItems] = useState(10)
+
+    let [searchParams , setSearchParams] = useSearchParams()
+
+    let search = searchParams.get("word")
+    let year = searchParams.get("year")
+    let actor = searchParams.get("actor")
+    let genres = searchParams.get("genres")
+    if(genres){
+        genres = genres.split(',')
+    }
+    
 
 
     useEffect(() => {
-        console.log(data.slice(0 , 10))
+        console.log(searchParams.get("year") , genres , searchParams.get("actor") , searchParams.get('word'))
+        // genres = genres.split(',')
+        // console.log(genres)
+        // console.log(genres.every(genre => ["Drama", "Action", "Biography", "Family", "Sports"].includes(genre))); // true    })
     })
+    // useEffect(() => {
+    //     console.log(data.slice(0 , 10))
+    // })
     return (
     <>
         <div className="flex flex-wrap mx-20  items-center justify-center mt-20 mb-96">
             {
                 data.filter((movie) => {
-                    if(movie.title.toLowerCase().includes(search.toLowerCase())){
+                    if(year && movie.year != year){
+                        return false;
+                    }else if(genres && !genres.every(genre => movie.genres.includes(genre))){
+                        return false;
+                    }else if(actor && !movie.cast.includes(actor)){
+                        return false;
+                    }else if(search && movie.title.toLowerCase().includes(search.toLowerCase())){
                         return true;
-                    }else if(search.toLowerCase().includes(movie.title.toLowerCase())){
+                    }else if(search && search.toLowerCase().includes(movie.title.toLowerCase())){
                         return true;
-                    }else if(movie.genres.some(item => item.includes(search.toLowerCase()))){
+                    }else if(search && movie.genres.some(item => item.includes(search.toLowerCase()))){
                         return true;
-                    }else if( movie.extract ? movie.extract.toLowerCase().includes(search) : false){
+                    }else if(search && movie.extract ? movie.extract.toLowerCase().includes(search) : false){
                         return true;
-                    }else if( search == movie.year){
+                    }else if(search && search == movie.year){
                         return true;
-                    }else if(movie.cast.some(item => item.toLowerCase().includes(search.toLowerCase()))){
+                    }else if(search && movie.cast.some(item => item.toLowerCase().includes(search.toLowerCase()))){
+                        return true;
+                    }else if(!search){
                         return true;
                     }
-                }).slice(0 , 10).map((movie) => {
+                }).length ? 
+                data.filter((movie) => {
+                    if(year && movie.year != year){
+                        return false;
+                    }else if(genres && !genres.every(genre => movie.genres.includes(genre))){
+                        return false;
+                    }else if(actor && !movie.cast.includes(actor)){
+                        return false;
+                    }else if(search && movie.title.toLowerCase().includes(search.toLowerCase())){
+                        return true;
+                    }else if(search && search.toLowerCase().includes(movie.title.toLowerCase())){
+                        return true;
+                    }else if(search && movie.genres.some(item => item.includes(search.toLowerCase()))){
+                        return true;
+                    }else if(search && movie.extract ? movie.extract.toLowerCase().includes(search) : false){
+                        return true;
+                    }else if(search && search == movie.year){
+                        return true;
+                    }else if(search && movie.cast.some(item => item.toLowerCase().includes(search.toLowerCase()))){
+                        return true;
+                    }else if(!search){
+                        return true;
+                    }
+                }).slice(0 , numberOfItems).map((movie) => {
                     return(
                         <div className="relative flex items-center justify-center h-52 w-[30rem] overflow-hidden p-5 bg-secondry rounded-xl  hover:scale-125 hover:delay-[1000ms] hover:bg-purple transition-all group m-5 hover:z-50 cursor-pointer">
                                     <div className=' flex gap-5 items-center justify-center'>
                                         <img src={movie.thumbnail ? movie.thumbnail : "https://ih1.redbubble.net/image.4905811447.8675/flat,750x,075,f-pad,750x1000,f8f8f8.jpg"} className=" object-cover max-w-[11rem] max-h-[11rem] rounded-xl"/>
                                         <div className="">
                                             <h1 className=' text-xl text-white font-bold mb-5'>{movie.title.slice(0 , 20)}</h1>
-                                            {/* ---------------Ratings------------ */}
-                                            {/* <div className="flex gap-5 items-center my-1">
-                                                <div>
-                                                    <FaImdb className=" text-imdb text-3xl"/>
-                                                    <h1 className=" font-bold text-white">8/10</h1>
-                                                </div>
-                                                <div>
-                                                    <SiRottentomatoes className=" text-rose-600 text-3xl"/>
-                                                    <h1 className=" font-bold text-white">88%</h1>
-                                                </div>
-                                            </div> */}
                                             {/* ----------------Genres------------------ */}
                                             <div className=" flex gap-2 my-2">
                                             {movie.genres.slice(0 , 5).map((genre) => {
@@ -75,15 +113,25 @@ function Search() {
                                         className=' absolute opacity-0 hover:opacity-100 transition-all hover:delay-[1800ms]'
                                         width="720"
                                         height="405"
-                                        src={("trailer" in movie ? movie.trailer : "https://www.youtube.com/embed/aDm5WZ3QiIE") + "?autoplay=1&mute=1&start=30&modestbranding=1&rel=0&loop=1&playlist=" + ("trailer" in movie ? movie.trailer : "https://www.youtube.com/embed/").split('/').pop()}
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        src={
+                                            (() => {
+                                                const trailerUrl = movie?.trailer || "https://www.youtube.com/embed/aDm5WZ3QiIE";
+                                                const videoId = trailerUrl.split('/').pop();
+                                                return `${trailerUrl}?autoplay=1&mute=1&start=30&modestbranding=1&rel=0&loop=1&playlist=${videoId}`;
+                                            })()
+                                            }
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen
                                         loading='lazy'
                                     ></iframe>
                                 </div>
                     )
                 })
+                :<div className=" flex items-center justify-center text-white text-7xl font-black">
+                    No Movies For You Today
+                </div>
             }
+            <div className="bg-purple text-white text-3xl font-semibold px-10 py-5 rounded-tl-md rounded-br-md rounded-tr-xl rounded-bl-xl hover:bg-black transition-all cursor-pointer" onClick={(e) => setNumberOfItems(prev => prev + 10)}>Load More</div>
         </div>
     </>
     );
