@@ -1,10 +1,15 @@
 /* eslint-disable */
+import { writeFileSync } from 'fs';
+
+// Your large message
+
+// Write to a file
 import {data} from "./editedData.js";
 
 function similarity(){
 
-    let dataCopy = [...data];
-    
+  let dataCopy = [...data];
+  
     const film =   {
         title: "Inception",
         year: 2010,
@@ -17,7 +22,7 @@ function similarity(){
         genres: ["Science Fiction", "Thriller"],
         href: "Inception",
         extract:
-          "Inception is a sci-fi thriller directed by Christopher Nolan, involving dream infiltration and extraction, led by skilled thief Dom Cobb.",
+        "Inception is a sci-fi thriller directed by Christopher Nolan, involving dream infiltration and extraction, led by skilled thief Dom Cobb.",
         rating: 8.369,
         wideImg: "https://image.tmdb.org/t/p/w1280/8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg",
         duration: "2h 28m",
@@ -85,7 +90,7 @@ function similarity(){
       if (movie.year === film.year) {
         score += 0.2;
       }
-    
+      
       // Rating similarity (scaled)
       const ratingDifference = Math.abs(movie.rating - film.rating);
       if (ratingDifference <= 1) {
@@ -120,20 +125,20 @@ function similarity(){
     function convertDurationToMinutes(duration) {
         // Check if duration is a valid string
         if (typeof duration !== 'string' || !duration) {
-            return 0;  // Return 0 if the duration is invalid or undefined
+          return 0;  // Return 0 if the duration is invalid or undefined
         }
-    
+        
         const parts = duration.split(' ');
         let hours = 0;
         let minutes = 0;
-    
+        
         // Check and process hours
         if (parts.length > 0 && parts[0].includes('h')) {
             hours = parseInt(parts[0].replace('h', '').trim());
-        }
+          }
     
-        // Check and process minutes
-        if (parts.length > 1 && parts[1].includes('m')) {
+          // Check and process minutes
+          if (parts.length > 1 && parts[1].includes('m')) {
             minutes = parseInt(parts[1].replace('m', '').trim());
         }
     
@@ -158,9 +163,9 @@ const movie =   {
   genres: ["Superhero", "Action"],
   href: "Avengers:_Endgame",
   extract:
-    "Avengers: Endgame concludes the Marvel Cinematic Universe's Infinity Saga, following the Avengers' efforts to undo the devastation caused by Thanos.",
+  "Avengers: Endgame concludes the Marvel Cinematic Universe's Infinity Saga, following the Avengers' efforts to undo the devastation caused by Thanos.",
   thumbnail:
-    "https://w0.peakpx.com/wallpaper/632/50/HD-wallpaper-poster-of-avengers-endgame-movie-thumbnail.jpg",
+  "https://w0.peakpx.com/wallpaper/632/50/HD-wallpaper-poster-of-avengers-endgame-movie-thumbnail.jpg",
   rating: 8.2,
   wideImg: "https://image.tmdb.org/t/p/w1280/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
   duration: "3h 1m",
@@ -171,14 +176,14 @@ const movie =   {
     {
       author: "garethmb",
       content:
-        "The epic Marvel Saga that started over ten years ago has been building up to the inevitable clash with the powerful tyrant Thanos (Josh Brolin).  Last year’s “Avengers: Infinity War” set the stage for the highly-anticipated conclusion; “Avengers: End Game” and at long last it has arrived.\r\n\r\nPicking up shortly after the events of the last film, the Avengers must deal with the aftermath of what Thanos has done. The team is naturally divided between wanting revenge, wanting to set things right, and just wanting to take what they have and go on. \r\n\r\nAs time passes and they struggle to accept the reality of their situation; an unexpected individual returns and with them comes the seeds of a new plan to make things right. Naturally Tony Stark (Robert Downey Jr.) is skeptical but eventually warms to the possibilities of the idea thanks to a new scientific breakthrough that makes it possible.\r\n\r\nInspired, Tony sets out to put an elaborate plan in motion that will allow the team to try to fix things and to stop Thanos once and for all.\r\n\r\nWhat follows is an extended and at times nostalgic heist where various members of the team work to assemble the pieces needed for the plan as they believe they only have one chance to make things right.\r\n\r\nThe film is essentially three acts in one. The first deals with the recap and expansion of their situation and the planning. The second act is basically a heist where action and comedy are blended with some touching moments.\r\n\r\nThis all leads to the final act which is the FX laden set piece where the ensemble cast gathers to fight the forces of evil in a battle to save the Universe.\r\nThe film is epic in scale and length as it clocks in at over three hours but the movie is filled with so much content that the time goes by quickly and you have a hard time believing three hours have elapsed.\r\n\r\nIt is also a difficult film to review as you cannot recap elements of the film in any great detail without giving away elements that are sure to delight the fans. Suffice it to say that my only real issue with the fil and it was minor; was that it took a while to get to the action but at least there was plenty to keep you entertained along the way.\r\n\r\nAs this phase of the Marvel Film Universe winds down and plans are put in place for the next five years; “Avengers: End Game” is a satisfying conclusion to the epic saga that was started many years ago and weaves elements of many of the past Marvel films into an entertaining tale which features all of the best elements that have made the series of films such big hits.\r\n\r\n4.5 stars out of 5",
+      "The epic Marvel Saga that started over ten years ago has been building up to the inevitable clash with the powerful tyrant Thanos (Josh Brolin).  Last year’s “Avengers: Infinity War” set the stage for the highly-anticipated conclusion; “Avengers: End Game” and at long last it has arrived.\r\n\r\nPicking up shortly after the events of the last film, the Avengers must deal with the aftermath of what Thanos has done. The team is naturally divided between wanting revenge, wanting to set things right, and just wanting to take what they have and go on. \r\n\r\nAs time passes and they struggle to accept the reality of their situation; an unexpected individual returns and with them comes the seeds of a new plan to make things right. Naturally Tony Stark (Robert Downey Jr.) is skeptical but eventually warms to the possibilities of the idea thanks to a new scientific breakthrough that makes it possible.\r\n\r\nInspired, Tony sets out to put an elaborate plan in motion that will allow the team to try to fix things and to stop Thanos once and for all.\r\n\r\nWhat follows is an extended and at times nostalgic heist where various members of the team work to assemble the pieces needed for the plan as they believe they only have one chance to make things right.\r\n\r\nThe film is essentially three acts in one. The first deals with the recap and expansion of their situation and the planning. The second act is basically a heist where action and comedy are blended with some touching moments.\r\n\r\nThis all leads to the final act which is the FX laden set piece where the ensemble cast gathers to fight the forces of evil in a battle to save the Universe.\r\nThe film is epic in scale and length as it clocks in at over three hours but the movie is filled with so much content that the time goes by quickly and you have a hard time believing three hours have elapsed.\r\n\r\nIt is also a difficult film to review as you cannot recap elements of the film in any great detail without giving away elements that are sure to delight the fans. Suffice it to say that my only real issue with the fil and it was minor; was that it took a while to get to the action but at least there was plenty to keep you entertained along the way.\r\n\r\nAs this phase of the Marvel Film Universe winds down and plans are put in place for the next five years; “Avengers: End Game” is a satisfying conclusion to the epic saga that was started many years ago and weaves elements of many of the past Marvel films into an entertaining tale which features all of the best elements that have made the series of films such big hits.\r\n\r\n4.5 stars out of 5",
       created_at: "April 24, 2019",
       url: "https://www.themoviedb.org/review/5cbf94670e0a266b96fba5ef",
     },
     {
       author: "Gimly",
       content:
-        "Hey, so, just some really quick thoughts I wanna get down, 'cause it's after 1 o'clock in the morning, and I wanna get some sleep so I can wake up well rested to see _Endgame_ again.\r\n\r\nPutting it out there right from the get-go, _Avengers: Endgame_ is my favourite MCU movie. It's my favourite movie of the year too, but I've only seen like ten or so 2019 releases, and this is the 22nd Marvel Cinematic Universe film, so that seems far and away the bigger deal. I can't say it's perfect, there's some conflicting stuff within its own runtime that really doesn't seem to gel (though a re-watch may prove me wrong on that), and it's not like every moment was the no-holds-barred-zero-exception best version of that moment from start to end. But God I loved this thing.\r\n\r\nI will say this though, the reason that I loved it, is this thing is fan service galore. If you do not care for the franchise's 21 movies preceding this point, then _Endgame_ is not the movie to turn you around on that. That may come in a future installment, but this one is a culmination. It's the end of _Infinity War_ but also Phase 3, but also a wrap-up and genuine ode to/send off for everything that Marvel has done over the past 11 years. That to me was incredible, and I am eternally greatful, but I cannot imagine it working for people who have no vested interest in these characters.\r\n\r\nTo me though? My first 9 out of 10 rating in **three years**.\r\n\r\n_Final rating:★★★★½ - Ridiculously strong appeal. I can’t stop thinking about it._",
+      "Hey, so, just some really quick thoughts I wanna get down, 'cause it's after 1 o'clock in the morning, and I wanna get some sleep so I can wake up well rested to see _Endgame_ again.\r\n\r\nPutting it out there right from the get-go, _Avengers: Endgame_ is my favourite MCU movie. It's my favourite movie of the year too, but I've only seen like ten or so 2019 releases, and this is the 22nd Marvel Cinematic Universe film, so that seems far and away the bigger deal. I can't say it's perfect, there's some conflicting stuff within its own runtime that really doesn't seem to gel (though a re-watch may prove me wrong on that), and it's not like every moment was the no-holds-barred-zero-exception best version of that moment from start to end. But God I loved this thing.\r\n\r\nI will say this though, the reason that I loved it, is this thing is fan service galore. If you do not care for the franchise's 21 movies preceding this point, then _Endgame_ is not the movie to turn you around on that. That may come in a future installment, but this one is a culmination. It's the end of _Infinity War_ but also Phase 3, but also a wrap-up and genuine ode to/send off for everything that Marvel has done over the past 11 years. That to me was incredible, and I am eternally greatful, but I cannot imagine it working for people who have no vested interest in these characters.\r\n\r\nTo me though? My first 9 out of 10 rating in **three years**.\r\n\r\n_Final rating:★★★★½ - Ridiculously strong appeal. I can’t stop thinking about it._",
       created_at: "April 24, 2019",
       url: "https://www.themoviedb.org/review/5cc07fa00e0a2615fdf464d3",
     },
@@ -212,14 +217,29 @@ function omar(){
     }else if(search.toLowerCase().includes(movie.title.toLowerCase())){
         return true;
     }else if(movie.genres.some(item => item.includes(search.toLowerCase()))){
-        return true;
+      return true;
     }else if( movie.extract ? movie.extract.toLowerCase().includes(search) : false){
         return true;
     }else if( search == movie.year){
-        return true;
+      return true;
     }else if(movie.cast.some(item => item.toLowerCase().includes(search.toLowerCase()))){
-        return true;
+      return true;
     }else return false;
 }
-console.log(movie.cast)
-console.log(omar());
+
+let d = [];
+
+for(const movie of data){
+  if(!movie.cast){
+    continue;
+  }
+  for(const actor of movie.cast){
+    d.push(actor)
+  }
+}
+
+let x = new Set(d)
+const dataString = JSON.stringify(Array.from(x), null, 2);
+
+writeFileSync('output.txt', dataString);
+console.log(x)

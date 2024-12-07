@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react';
+import { actors } from './DataEditing/actors';
 const genres = [
     "Comedy",
     "Mystery",
@@ -44,6 +45,7 @@ function Genres() {
         "Animation": false,
         "Science Fiction": false
     })
+    const [actor , setActor] = useState("0")
 
     function handleYear(e){
         setYear(e.target.value)
@@ -56,7 +58,7 @@ function Genres() {
     }
 
     useEffect(() => {
-        console.log(year)
+        console.log(actors)
     })
 
 
@@ -78,7 +80,7 @@ function Genres() {
                     })
                 }
             </div>
-            <div className=' flex gap-20 mb-20 ml-5 mt-10'>
+            <div className=' flex gap-20 mb-20 ml-5 mt-10 items-center'>
                 <div>
                     <h1 className=' text-4xl text-white mb-5'>Year</h1>
                     <select name="" id="" 
@@ -93,10 +95,22 @@ function Genres() {
                     </select>
                     {/* <input type="menu" className='bg-secondry py-2 px-2 caret-white  rounded-tr-xl rounded-bl-xl rounded-tl-sm rounded-br-sm outline-none focus:border-purple focus:border text-white'/> */}
                 </div>
-                {/* <div>
-                    <h1 className=' text-4xl text-white mb-5'>To</h1>
-                    <input type="year" className='bg-secondry py-2 px-2 caret-white  rounded-tr-xl rounded-bl-xl rounded-tl-sm rounded-br-sm outline-none focus:border-purple focus:border text-white'/>
-                </div> */}
+                <div className=''>
+                    <h1 className=' text-4xl text-white mb-5'>Actor</h1>
+                    <input className=" px-3 py-2 bg-secondry"
+                        type="text"
+                        list="actorsList"
+                        value={actor}
+                        onChange={(e) => setActor(e.target.value)}
+                        placeholder="Choose an actor"
+                        className="actor-input"
+                    />
+                    <datalist id="actorsList">
+                        {actors.map((actorName, index) => (
+                        <option key={index} value={actorName} />
+                        ))}
+                    </datalist>
+                </div>
             </div>
             <div className=' flex items-center justify-center'>
                 <button className=' text-5xl text-white bg-secondry w-[100%] mx-auto py-3 font-bold mb-28 rounded-2xl hover:bg-purple transition-all'>Search</button>

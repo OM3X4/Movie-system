@@ -63,6 +63,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/search/:search" element={<Search />}/>
+            <Route path="/genres" element={<Genres />} />
           </Routes>
         </div>
       </div>
