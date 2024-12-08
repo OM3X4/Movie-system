@@ -51,6 +51,9 @@ function Genres() {
     const [actor , setActor] = useState("0")
     const [Genres , setGenres] = useState([]);
 
+    useEffect(() => {
+        console.log(actor)
+    })
 
 
     function handleYear(e){
@@ -79,7 +82,7 @@ function Genres() {
                     genres.map((Genre) => {
                         return(
                             <button 
-                            className={` text-white font-semibold bg-${buttons[Genre] ? "purple" : "secondry"} px-3 py-3 mx-3 my-5 rounded-tr-xl rounded-bl-xl rounded-tl-sm rounded-br-sm ${!buttons[Genre] ? "hover:scale-110 hover:bg-search" : ""} transition-all cursor-pointer`}
+                            className={` text-white font-semibold bg-${buttons[Genre] ? "purple" : "secondry"} px-3 py-3 mx-3 my-3 rounded-tr-xl rounded-bl-xl rounded-tl-sm rounded-br-sm ${!buttons[Genre] ? "hover:scale-110 hover:bg-search" : ""} transition-all cursor-pointer`}
                             onClick={() => toggleButton(Genre)}>
                                 {Genre}
                             </button>
@@ -107,7 +110,7 @@ function Genres() {
                     <input className="bg-secondry py-3 px-3 font-semibold caret-white  rounded-tr-xl rounded-bl-xl rounded-tl-sm rounded-br-sm outline-none focus:border-purple focus:border text-white"
                         type="text"
                         list="actorsList"
-                        value={actor}
+                        // value={actor}
                         onChange={(e) => setActor(e.target.value)}
                         placeholder="Choose an actor"
                     />
@@ -119,8 +122,9 @@ function Genres() {
                     </datalist>
                 </div>
             </div>
-            <div className=' flex items-center justify-center'>
-                <Link to={`/search/?${(year != "0"  && year != null) ? ("year=" + year + "&") : ""}${Genres.length > 0 ? "genres=" + [...Genres].map(genre => genre) + "&" : ""}`}>
+            <div className=' flex items-center justify-center w-full'>
+                <Link to={`/search/?${(year != "0"  && year != null) ? ("year=" + year + "&") : ""}${Genres.length > 0 ? "genres=" + [...Genres].map(genre => genre) + "&" : ""}${actor != "0" ? "actor=" + actor + "&" : ""}`}
+                className='w-full'>
                     <button className=' text-5xl text-white bg-secondry w-[100%] mx-auto py-3 font-bold mb-28 rounded-2xl hover:bg-purple transition-all'>Search</button>
                 </Link>
             </div>
