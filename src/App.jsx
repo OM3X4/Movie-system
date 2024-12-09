@@ -13,6 +13,7 @@ import Movie from "./Movie";
 import Search from './search'
 import Genres from "./genres";
 import { Routes , Route , Link , useLocation} from "react-router";
+import Actor from "./actor";
 
 
 function App() {
@@ -75,6 +76,7 @@ function App() {
               <Route path="/search/" element={<Search />}/>
               <Route path="/genres" element={<Genres />} />
               <Route path="/movie" element={<Movie />} />
+              <Route path="/actor" element={<Actor />} />
             </Routes>
           </div>
         </div>

@@ -47,7 +47,7 @@ function Home() {
                                                     return true;
                                                 }
                                             }).slice(0 , 4).map((movie) => {
-                                                return <img src={movie.thumbnail} alt="" className=" max-w-24 max-h-24 rounded-md"/>
+                                                return <img src={movie.thumbnail} alt="" className=" max-w-20 max-h-24 rounded-md object-cover"/>
                                             })
                                             }
                                         </div>
@@ -69,7 +69,7 @@ function Home() {
                         <div className=" flex h-[300px]">
                             <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-between hover:bg-purple duration-300 transition-all cursor-pointer group hover:scale-105">
                                 <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:scale-105 transition-all duration-200 ease-in">
-                                    <img src={movie.thumbnail} alt={movie.title}  className=" rounded-xl"/>
+                                    <img src={movie.thumbnail} alt={movie.title}  className=" rounded-xl "/>
                                 </div>
                                 <div className=" bg-zinc-800 px-4 py-1 text-sm rounded-full font-bold text-gray-300 ">Released at {movie.release ? movie.release : movie.year}</div>
                             </div>
@@ -84,9 +84,11 @@ function Home() {
             <div className=" flex items-center justify-center gap-8 mb-20">
                 {actors.map(actor => {
                     return (
-                        <div className=" size-44 overflow-hidden rounded-full hover:scale-[118%] transition-all cursor-pointer">
-                            <img src={actor.img} alt="" className="object-cover"/>
-                        </div>
+                        <Link to={`/search/?actor=${actor.Name}`}>
+                            <div className=" size-44 overflow-hidden rounded-full hover:scale-[118%] transition-all cursor-pointer">
+                                <img src={actor.img} alt="" className="object-cover"/>
+                            </div>
+                        </Link>
                     )
                 })}
             </div>

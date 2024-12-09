@@ -6,11 +6,23 @@ import { FaImdb } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai"; 
 import { AiFillPlayCircle } from "react-icons/ai"; 
 import { data } from '../public/Data/editedData.js';
-const MOVIENAME = "The Queen Gambit"
-
+import { actorsData } from "../public/Data/actorsomar.js"
+import { Link , useSearchParams , useLocation } from 'react-router';
 
 function Movie() {
     
+    
+
+    function findMovie(MOVIENAME){
+      for(const i of data){
+          if(i.title === MOVIENAME){
+              setMovieData(i);
+              console.log(i)
+              break;
+          }
+      }
+    }
+
     function similarity(data , film){
 
         let dataCopy = [...data];
@@ -95,6 +107,17 @@ function Movie() {
         return dataCopy;
     }
 
+    const location = useLocation()
+
+
+    const [castTeam , setCastTeam] = useState([])
+    const [isPageLoading , setIsPageLoading] = useState(false)
+    const [loadingState , setLoadingState] = useState(0)
+
+    const [searchParams , setSearchParams] = useSearchParams()
+    
+    const MOVIENAME = searchParams.get("name")
+
     const [movieData , setMovieData] = useState({
         title: "Breaking Bad",
         year: 2008,
@@ -143,25 +166,50 @@ function Movie() {
         ],
     })
 
-    function findMovie(MOVIENAME){
-        for(const i of data){
-            if(i.title === MOVIENAME){
-                setMovieData(i);
-                console.log(i)
-                break;
-            }
+    function findCast(){
+      for(const actor of movieData.cast){
+        for(const man of actorsData){
+          if(actor == man.name){
+            setCastTeam(prev => Array.from(new Set([...prev , man])))
+            break;
+          }
         }
+      }
     }
+    
+    // // ------------------------ load setter ----------------------
+    // useEffect(() => {
+    //   setIsPageLoading(true)
+    //   setTimeout(() => {setIsPageLoading(false)} , 1000)
+    // } , [location]) 
+
+    // // ----------------- loading bar setter -------------------
+    // useEffect(() => {
+    //   setLoadingState(0)
+    //   // Function to update the time elapsed
+    //   const intervalId = setInterval(() => {
+    //     setLoadingState(prevTime => prevTime + 1.5);  // Increment time by 1 second
+    //   }, "1 ms");  // Update every second
+  
+    //   // Cleanup function to clear the interval when the component unmounts
+    //   return () => clearInterval(intervalId);
+    // }, [location]); 
+
+    // ----------------------------- movie finder ------------------------
     useEffect(() => {
         findMovie(MOVIENAME);
-        console.log(movieData.wideImg)
-    } , [])
+    } , [location])
 
+    useEffect(() => {
+      setCastTeam([])
+      findCast()
+      console.log(castTeam)
+    } , [movieData])
 
 
 return (
     <>
-        <div>
+        {!isPageLoading ? <div>
             {/* ---------Banner------------ */}
             <div>
                 <div style={{backgroundImage: `url(${movieData.wideImg})`,height: '28rem',backgroundPosition: 'center',}}className="flex items-end justify-between">
@@ -175,7 +223,7 @@ return (
                 </div>
 
             </div>
-            <div className='flex justify-center mt-10 gap-10'>
+            <div className='flex justify-center mt-6 gap-10 ml-10'>
                 {/* -------------paragraph------------ */}
                 <div>
                     <div className=' flex'>
@@ -187,18 +235,39 @@ return (
                             )
                         })}
                     </div>
-                    <div className='text-gray-200 text-2xl max-w-[40rem] ml-10 mt-10 mb-10'>
+                    <div className='text-gray-200 text-xl max-w-[40rem] ml-10 mt-6 mb-10'>
                         {movieData.extract}
                     </div>
+                    {/* ------------------- Ratings -------------------- */}
+                    <div className=' flex items-center justify- text-5xl mb-7 text-white ml-3'>
+                      <FaImdb className='text-imdb text-6xl'/>{movieData.rating.toFixed(1)}
+                    </div>
                     <div>
-                    <iframe
-                        width="720"
-                        height="405"
-                        src={movieData.trailer}
-                        title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
+                      <iframe
+                          width="720"
+                          height="405"
+                          src={movieData.trailer}
+                          title="YouTube video player"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                      ></iframe>
+                    </div>
+                    {/* --------------------actors---------------- */}
+                    <div className=' flex items-center mt-20 flex-wrap mb-20'>
+                        {
+                          castTeam.slice(0 , 4).map((actor) => {
+                            return (
+                              <Link to={`/actor/?name=${actor.name}`}>
+                                <div className='bg-secondry cursor-pointer rounded-full m-4 overflow-hidden w-40 h-40 hover:scale-[115%] transition-all flex items-center justify-center group hover:rotate-6'>
+                                  <img src={actor.img} alt="" className=' object-cover group-hover:opacity-0'/>
+                                  <div className='absolute opacity-0 text-white text-xl font-semibold flex items-center justify-center group-hover:opacity-100 transition-all'>
+                                    <h1>{actor.name}</h1>
+                                  </div>
+                                </div>
+                              </Link>
+                            )
+                          })
+                        }
                     </div>
                 </div>
 
@@ -206,25 +275,14 @@ return (
                 <div className=' flex flex-col items-center mt-20'>
                     <h1 className=' text-white text-2xl font-bold '>Similar Movies/Shows</h1>
                     {
-
                         similarity(data , movieData).slice(1,4).map((movie) => {
                             return(
+                              <Link to={`/movie/?name=${movie.title}`} className='z-50'>
                                 <div className="relative flex items-center justify-center h-40 w-[25rem] overflow-hidden p-5 bg-secondry rounded-xl  hover:scale-125 hover:delay-[1000ms] hover:bg-purple transition-all group m-5">
                                     <div className=' flex gap-5 items-center justify-center'>
                                         <img src={movie.thumbnail ? movie.thumbnail : "https://ih1.redbubble.net/image.4905811447.8675/flat,750x,075,f-pad,750x1000,f8f8f8.jpg"} className=" object-cover max-w-32 max-h-32 rounded-xl"/>
                                         <div className="">
                                             <h1 className=' text-xl text-white font-bold mb-5'>{movie.title.slice(0 , 20)}</h1>
-                                            {/* ---------------Ratings------------ */}
-                                            {/* <div className="flex gap-5 items-center my-1">
-                                                <div>
-                                                    <FaImdb className=" text-imdb text-3xl"/>
-                                                    <h1 className=" font-bold text-white">8/10</h1>
-                                                </div>
-                                                <div>
-                                                    <SiRottentomatoes className=" text-rose-600 text-3xl"/>
-                                                    <h1 className=" font-bold text-white">88%</h1>
-                                                </div>
-                                            </div> */}
                                             {/* ----------------Genres------------------ */}
                                             <div className=" flex gap-2 my-2">
                                             {movie.genres.slice(0 , 5).map((genre) => {
@@ -243,21 +301,32 @@ return (
                                     </div>
                                     <img src={movie.wideImg} alt="" className=' absolute opacity-0 group-hover:opacity-100 transition-all group-hover:delay-[1000ms]'/>
                                     <iframe
-                                        className=' absolute opacity-0 hover:opacity-100 transition-all hover:delay-[1800ms]'
+                                        className=' absolute opacity-0 group-hover:opacity-100 transition-all group-hover:delay-[1800ms] pointer-events-none'
                                         width="720"
                                         height="405"
-                                        src={movie.trailer + "?autoplay=1&mute=1&start=30&modestbranding=1&rel=0&loop=1&playlist=" + movie.trailer.split('/').pop()}
+                                        src={
+                                          (() => {
+                                              const trailerUrl = movie?.trailer || "https://www.youtube.com/embed/aDm5WZ3QiIE";
+                                              const videoId = trailerUrl.split('/').pop();
+                                              return `${trailerUrl}?autoplay=1&mute=1&start=30&modestbranding=1&rel=0&loop=1&playlist=${videoId}`;
+                                          })()
+                                          }
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen
                                         loading='lazy'
                                     ></iframe>
                                 </div>
+                              </Link>
                             )
                         })
                     }
                 </div>
             </div>
         </div>
+        :<div className='bg-primary w-screen h-screen'>
+          <div style={{ width: `${loadingState}%`, height: '1px', backgroundColor: "#9747ff" }}></div>
+        </div>
+        }
     </>
     );
 }
