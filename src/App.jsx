@@ -1,5 +1,5 @@
-import { BiSearchAlt } from "react-icons/bi"; 
 /* eslint-disable */
+import { BiSearchAlt } from "react-icons/bi"; 
 import { CgProfile } from "react-icons/cg"; 
 import { AiFillBell } from "react-icons/ai"; 
 import { AiFillHome } from "react-icons/ai"; 
@@ -12,8 +12,10 @@ import Home from './home'
 import Movie from "./Movie";
 import Search from './search'
 import Genres from "./genres";
+import {data } from "../public/Data/editedData"
 import { Routes , Route , Link , useLocation} from "react-router";
 import Actor from "./actor";
+import MovieCard from "./movieCard";
 
 
 function App() {
@@ -72,7 +74,7 @@ function App() {
           </div>
           <div className='flex-1 ml-[15vw] min-h-[91vh]'>
             <Routes>
-              <Route path="/" element={<Home />}/>
+              <Route path="/" element={<MovieCard movie={data[0]} h={"52"} w="[30rem]"/>}/>
               <Route path="/search/" element={<Search />}/>
               <Route path="/genres" element={<Genres />} />
               <Route path="/movie" element={<Movie />} />
