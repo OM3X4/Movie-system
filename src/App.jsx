@@ -74,7 +74,7 @@ function App() {
           </div>
           <div className='flex-1 ml-[15vw] min-h-[91vh]'>
             <Routes>
-              <Route path="/" element={<MovieCard movie={data[0]} h={"52"} w="[30rem]"/>}/>
+              <Route path="/" element={<Home/>}/>
               <Route path="/search/" element={<Search />}/>
               <Route path="/genres" element={<Genres />} />
               <Route path="/movie" element={<Movie />} />

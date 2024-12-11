@@ -61,7 +61,7 @@ function Search() {
                 filteredData.length ? 
                 filteredData.slice(0 , numberOfItems).map((movie) => {
                     return(
-                        <MovieCard movie={movie} h={"52"} w={"[30rem]"}  />
+                        <MovieCard movie={movie} h={"13rem"} w={"30rem"}  imgH={"11rem"} imgW={"11rem"}/>
                     )
                 })
                 :<div className=" flex items-center justify-center text-white text-7xl font-black">

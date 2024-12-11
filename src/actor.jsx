@@ -80,13 +80,14 @@ function Actor() {
         {/* ---------Banner------------ */}
         <div>
             <div style={{backgroundImage: `url(${movie.wideImg})`,height: '28rem',backgroundPosition: 'center',}}className="flex items-end justify-between">
-                <div className=' ml-20 mb-5 text-white text-6xl font-bold'>
-                    <h1 className='mb-3'>{movie.title}</h1>
+                <div className=' ml-20 mb-5 text-white text-6xl font-bold absolute bottom-28'>
+                    <h1 className='mb-3'>{actorData.name}</h1>
                     <h1 className=' font-medium text-2xl'>{movie.genres[0]} | {movie.release} | {movie.duration}</h1>
+                    <div className=' border-2 border-white bg-secondry rounded-full overflow-hidden w-52 h-52 flex items-center justify-center ml-10 mt-3'>
+                        <img src={actorData.img} alt="" className=' object-cover group-hover:opacity-0'/>
+                    </div>
                 </div>
-                <div className="ml-10 self-end flex justify-center items-center mr-20 mb-5">
-                    <button className="flex items-center justify-center bg-primary text-white text-xl mx-2 px-10 py-4 rounded-tl-md rounded-br-md rounded-tr-xl rounded-bl-xl hover:bg-purple hover:text-white transition-all duration-300"><BiBookmark />Watch List</button>
-                </div>
+
             </div>
         </div>
     </>
