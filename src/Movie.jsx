@@ -262,7 +262,7 @@ return (
                                 <div className='bg-secondry cursor-pointer rounded-full m-4 overflow-hidden w-40 h-40 hover:scale-[115%] transition-all flex items-center justify-center group hover:rotate-6'>
                                   <img src={actor.img} alt="" className=' object-cover group-hover:opacity-0'/>
                                   <div className='absolute opacity-0 text-white text-xl font-semibold flex items-center justify-center group-hover:opacity-100 transition-all'>
-                                    <h1>{actor.name}</h1>
+                                    <p className=' text-center'>{actor.name}</p>
                                   </div>
                                 </div>
                               </Link>

@@ -20,7 +20,7 @@ function Actor() {
         "known_for": [],
         "social": {}
       },)
-    const [movie , setMovie] = useState({
+    const [movies , setMovies] = useState({
         "title": "Breaking Bad",
         "year": 2008,
         "cast": [
@@ -43,6 +43,7 @@ function Actor() {
         "genre": "Drama",
         "trailer": "https://www.youtube.com/embed/XZ8daibM3AE",
       },)
+    
     const ACTORNAME = useSearchParams()[0].get("name")
 
 
@@ -55,10 +56,10 @@ function Actor() {
         }
     }
 
-    function findMovie(){
+    function findMovies(){
         for(const Movie of data){
             if(Movie.cast.includes(actorData.name)){
-                setMovie(Movie);
+                setMovies(prev => [...prev , Movie]);
                 break;
             }
         }
@@ -89,6 +90,9 @@ function Actor() {
                 </div>
 
             </div>
+        </div>
+        <div>
+            
         </div>
     </>
     );
