@@ -4,6 +4,7 @@ import React, { useEffect , useState } from 'react';
 import { actorsData } from '../public/Data/actorsomar';
 import { data } from "../public/Data/editedData"
 import { Link , useSearchParams , useLocation } from 'react-router';
+import MovieCard from "./movieCard";
 
 function Actor() {
 
@@ -19,8 +20,8 @@ function Actor() {
         "gender": "Male",
         "known_for": [],
         "social": {}
-      },)
-    const [movies , setMovies] = useState({
+    },)
+    const [movies , setMovies] = useState([{
         "title": "Breaking Bad",
         "year": 2008,
         "cast": [
@@ -42,7 +43,8 @@ function Actor() {
         "release": "January 20, 2008",
         "genre": "Drama",
         "trailer": "https://www.youtube.com/embed/XZ8daibM3AE",
-      },)
+    }])
+    const [movie , setMovie] = useState()
     
     const ACTORNAME = useSearchParams()[0].get("name")
 
@@ -57,22 +59,40 @@ function Actor() {
     }
 
     function findMovies(){
+        setMovies([])
         for(const Movie of data){
             if(Movie.cast.includes(actorData.name)){
+                console.log(Movie)
                 setMovies(prev => [...prev , Movie]);
-                break;
             }
         }
+    }
+
+    function chooseMovie(){
+        movies.sort((a , b) => movie.rating / a.cast.indexOf(actorData.name) - movie.rating / b.cast.indexOf(actorData.name))
     }
 
 
     // ----------------------actor setter ---------------
     useEffect(() => {
         findActor();
-        findMovie();
+        findMovies();
+        setMovies(movies => movies.sort((a, b) => {
+            const indexA = a.cast.indexOf(actorData.name);
+            const indexB = b.cast.indexOf(actorData.name);
+        
+            // Sort primarily by index of the actor
+            if (indexA !== indexB) {
+                return indexA - indexB; // Smaller index comes first
+            }
+        
+            // If indices are the same, sort by rating (higher rating first)
+            return b.rating - a.rating;
+        })
+        )
         // console.log(movie , actorData)
         // console.log(movie)
-    } ,)
+    } , [actorData])
 
 
 
@@ -80,10 +100,10 @@ function Actor() {
     <>
         {/* ---------Banner------------ */}
         <div>
-            <div style={{backgroundImage: `url(${movie.wideImg})`,height: '28rem',backgroundPosition: 'center',}}className="flex items-end justify-between">
+            <div style={{backgroundImage: `url(${movies[0].wideImg})`,height: '28rem',backgroundPosition: 'center',}}className="flex items-end justify-between">
                 <div className=' ml-20 mb-5 text-white text-6xl font-bold absolute bottom-28'>
                     <h1 className='mb-3'>{actorData.name}</h1>
-                    <h1 className=' font-medium text-2xl'>{movie.genres[0]} | {movie.release} | {movie.duration}</h1>
+                    <h1 className=' font-medium text-2xl'>{movies[0].genres[0]} | {movies[0].release} | {movies[0].duration}</h1>
                     <div className=' border-2 border-white bg-secondry rounded-full overflow-hidden w-52 h-52 flex items-center justify-center ml-10 mt-3'>
                         <img src={actorData.img} alt="" className=' object-cover group-hover:opacity-0'/>
                     </div>
@@ -91,8 +111,28 @@ function Actor() {
 
             </div>
         </div>
-        <div>
-            
+        <div className=" flex items-center justify-center">
+            {/* ------------------- Left Side ---------------------- */}
+            <div>
+                {/* ------------------------ Paragraph ----------------------- */}
+                <div className=" mx-10 text-white text-xl">
+                    {actorData.biography}
+                </div>
+                {/* -------------- Another Data --------------------- */}
+                <div className=" mx-10 flex ">
+                    <div className=" bg-yellow-500">{actorData.birthday}</div>
+                </div>
+            </div>
+            <div className=' flex flex-col items-center mt-20'>
+                    <h1 className=' text-white text-2xl font-bold '>Similar Movies/Shows</h1>
+                    {
+                        movies.slice(0,3).map((movie) => {
+                            return(
+                                <MovieCard movie={movie} h="12rem" w="25rem" imgH="10rem" imgW={"10rem"} />
+                            )
+                        })
+                    }
+            </div>
         </div>
     </>
     );

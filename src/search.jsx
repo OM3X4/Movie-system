@@ -13,6 +13,8 @@ import MovieCard from "./movieCard";
 
 function Search() {
 
+    const [isPageLoading , setIsPageLoading] = useState(false)
+    const [loadingState , setLoadingState] = useState(0)
 
     const [numberOfItems , setNumberOfItems] = useState(10)
 
@@ -53,9 +55,26 @@ function Search() {
 
     const filteredData = useMemo(() => filtering() , [search , year , actor , genres])
 
+    useEffect(() => {
+        setIsPageLoading(true)
+        setTimeout(() => {setIsPageLoading(false)} , 1000)
+      } , [location]) 
+  
+      // ----------------- loading bar setter -------------------
+      useEffect(() => {
+        setLoadingState(0)
+        // Function to update the time elapsed
+        const intervalId = setInterval(() => {
+          setLoadingState(prevTime => prevTime + 1.5);  // Increment time by 1 second
+        }, "1 ms");  // Update every second
+    
+        // Cleanup function to clear the interval when the component unmounts
+        return () => clearInterval(intervalId);
+      }, [location]); 
 
     return (
     <>
+    {!isPageLoading?
         <div className="flex flex-wrap mx-20  items-center justify-center mt-20 mb-96">
             {
                 filteredData.length ? 
@@ -70,6 +89,10 @@ function Search() {
             }
             <div className="bg-purple text-white text-3xl font-semibold px-10 py-5 rounded-tl-md rounded-br-md rounded-tr-xl rounded-bl-xl hover:bg-black transition-all cursor-pointer" onClick={(e) => setNumberOfItems(prev => prev + 10)}>Load More</div>
         </div>
+        :<div className='bg-primary w-screen h-screen'>
+            <div style={{ width: `${loadingState}%`, height: '1px', backgroundColor: "#9747ff" }}></div>
+        </div>
+        }
     </>
     );
 }

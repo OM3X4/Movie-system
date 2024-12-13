@@ -178,23 +178,23 @@ function Movie() {
       }
     }
     
-    // // ------------------------ load setter ----------------------
-    // useEffect(() => {
-    //   setIsPageLoading(true)
-    //   setTimeout(() => {setIsPageLoading(false)} , 1000)
-    // } , [location]) 
+    // ------------------------ load setter ----------------------
+    useEffect(() => {
+      setIsPageLoading(true)
+      setTimeout(() => {setIsPageLoading(false)} , 1000)
+    } , [location]) 
 
-    // // ----------------- loading bar setter -------------------
-    // useEffect(() => {
-    //   setLoadingState(0)
-    //   // Function to update the time elapsed
-    //   const intervalId = setInterval(() => {
-    //     setLoadingState(prevTime => prevTime + 1.5);  // Increment time by 1 second
-    //   }, "1 ms");  // Update every second
+    // ----------------- loading bar setter -------------------
+    useEffect(() => {
+      setLoadingState(0)
+      // Function to update the time elapsed
+      const intervalId = setInterval(() => {
+        setLoadingState(prevTime => prevTime + 1.5);  // Increment time by 1 second
+      }, "1 ms");  // Update every second
   
-    //   // Cleanup function to clear the interval when the component unmounts
-    //   return () => clearInterval(intervalId);
-    // }, [location]); 
+      // Cleanup function to clear the interval when the component unmounts
+      return () => clearInterval(intervalId);
+    }, [location]); 
 
     // ----------------------------- movie finder ------------------------
     useEffect(() => {

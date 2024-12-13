@@ -92,8 +92,8 @@ function App() {
         </div>
         <div className='flex flex-col'>
           {/* ------nav bar ------- */}
-          <div className=' h-[9vh] w-[85vw] ml-[15vw] bg-navbar border border-search flex items-center justify-center gap-5 sticky top-0'>
-              <input type="text" placeholder="Search for Movies , Shows..." className=" bg-search text-white w-[35vw] focus:w-[40vw] pr-5 pl-5 py-2 rounded-full transition-all duration-100" onChange={(e) => setSearchWord(e.target.value)} />
+          <div className='h-[9vh] w-[85vw] ml-[15vw] bg-navbar border border-search flex items-center justify-center gap-5 sticky top-0'>
+              <div className=" w-[40vw]"><input type="text" placeholder="Search for Movies , Shows..." className=" bg-search text-white w-[35vw] focus:w-[40vw] pr-5 pl-5 py-2 rounded-full transition-all duration-100" onChange={(e) => setSearchWord(e.target.value)} /></div>
               <Link to={`/search/?word=${searchWord}`}><div className=" text-white text-3xl hover:text-purple transition-all cursor-pointer"><BiSearchAlt /></div></Link>
               <AiFillBell className=" text-white text-2xl hover:text-purple duration-100 transition-all cursor-pointer ml-32"/>
               <CgProfile className=" text-2xl text-white"/>
