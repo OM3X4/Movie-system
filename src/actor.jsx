@@ -102,8 +102,8 @@ function Actor() {
         <div>
             <div style={{backgroundImage: `url(${movies[0].wideImg})`,height: '28rem',backgroundPosition: 'center',}}className="flex items-end justify-between">
                 <div className=' ml-20 mb-5 text-white text-6xl font-bold absolute bottom-28'>
-                    <h1 className='mb-3'>{actorData.name}</h1>
-                    <h1 className=' font-medium text-2xl'>{movies[0].genres[0]} | {movies[0].release} | {movies[0].duration}</h1>
+                    <h1 className='mb-3 text-8xl font-extrabold'>{actorData.name}</h1>
+                    {/* <h1 className=' font-medium text-2xl'>{movies[0].genres[0]} | {movies[0].release} | {movies[0].duration}</h1> */}
                     <div className=' border-2 border-white bg-secondry rounded-full overflow-hidden w-52 h-52 flex items-center justify-center ml-10 mt-3'>
                         <img src={actorData.img} alt="" className=' object-cover group-hover:opacity-0'/>
                     </div>
@@ -111,7 +111,7 @@ function Actor() {
 
             </div>
         </div>
-        <div className=" flex items-center justify-center">
+        <div className=" flex items-center justify-center mt-28">
             {/* ------------------- Left Side ---------------------- */}
             <div>
                 {/* ------------------------ Paragraph ----------------------- */}
@@ -119,12 +119,13 @@ function Actor() {
                     {actorData.biography}
                 </div>
                 {/* -------------- Another Data --------------------- */}
-                <div className=" mx-10 flex ">
-                    <div className=" bg-yellow-500">{actorData.birthday}</div>
+                <div className=" mx-10 flex mt-5">
+                    <div className="mx-5 bg-yellow-500 py-2 px-3 rounded-full font-medium">{actorData.birthday}</div>
+                    <div className="mx-5 bg-yellow-500 py-2 px-3 rounded-full font-medium">{actorData.place_of_birth}</div>
                 </div>
             </div>
             <div className=' flex flex-col items-center mt-20'>
-                    <h1 className=' text-white text-2xl font-bold '>Similar Movies/Shows</h1>
+                    <h1 className=' text-white text-4xl font-bold '>Known For</h1>
                     {
                         movies.slice(0,3).map((movie) => {
                             return(
