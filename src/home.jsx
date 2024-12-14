@@ -66,14 +66,16 @@ function Home() {
             <div className=" flex items-center justify-center gap-10">
                 { sortDate.slice(0 , 4).map(movie => {
                     return(
-                        <div className=" flex h-[300px]">
-                            <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-between hover:bg-purple duration-300 transition-all cursor-pointer group hover:scale-105">
-                                <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:scale-105 transition-all duration-200 ease-in">
-                                    <img src={movie.thumbnail} alt={movie.title}  className=" rounded-xl "/>
+                        <Link to={`/movie/?name=${movie.title}`}>
+                            <div className=" flex h-[300px]">
+                                <div className=" bg-secondry w-56 rounded-2xl p-4 flex items-center flex-col justify-between hover:bg-purple duration-300 transition-all cursor-pointer group hover:scale-105">
+                                    <div className="flex flex-wrap w-32 gap-1 mb-3 group-hover:scale-105 transition-all duration-200 ease-in">
+                                        <img src={movie.thumbnail} alt={movie.title}  className=" rounded-xl "/>
+                                    </div>
+                                    <div className=" bg-zinc-800 px-4 py-1 text-sm rounded-full font-bold text-gray-300 ">Released at {movie.release ? movie.release : movie.year}</div>
                                 </div>
-                                <div className=" bg-zinc-800 px-4 py-1 text-sm rounded-full font-bold text-gray-300 ">Released at {movie.release ? movie.release : movie.year}</div>
                             </div>
-                        </div>
+                        </Link>
                     )
                 })}
             </div>
