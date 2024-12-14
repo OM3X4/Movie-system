@@ -14,7 +14,7 @@ function Home() {
     return (
     <>
         {/* -----------banner----------- */}
-        <div className=' w-[full] h-[400px] overflow-hidden flex items-center justify relative bg-[url("public/joker-wide.jpg")] bg-center bg-cover'>
+        <div className=' w-[full] h-[400px] overflow-hidden flex items-center justify relative bg-[url("https://batman-news.com/wp-content/uploads/2024/04/Joker-2-Poster-1-Featured-01.jpg")] bg-center bg-cover'>
             {/* <img src='public/joker-wide.jpg' className=' object-cover brightness-50'/> */}
             <div className=' absolute bottom-10 text-white font-bold ml-7 flex flex-1'>
                 <div className=" w-[60%]">
@@ -25,9 +25,9 @@ function Home() {
                     the pair embark on a doomed romatinc misadventure</p>
                 </div>
                 <div className="ml-10 self-end flex justify-center items-center">
-                    <button className="flex items-center justify-center bg-white text-black w-32 text-sm mx-2 px-2 py-3 rounded-tl-md rounded-br-md rounded-tr-xl rounded-bl-xl hover:bg-black hover:text-white transition-all duration-300"><AiFillPlayCircle className="mx-1"/>Watch Trailer</button>
+                    {/* <button className="flex items-center justify-center bg-white text-black w-32 text-sm mx-2 px-2 py-3 rounded-tl-md rounded-br-md rounded-tr-xl rounded-bl-xl hover:bg-black hover:text-white transition-all duration-300"><AiFillPlayCircle className="mx-1"/>Watch Trailer</button>
                     <button className="flex items-center justify-center bg-purple text-white w-32 text-sm mx-2 py-3 rounded-tl-md rounded-br-md rounded-tr-xl rounded-bl-xl hover:bg-black hover:text-white transition-all duration-300"><AiOutlineInfoCircle className="mx-2"/>Info</button>
-                    <button className="flex items-center justify-center bg-primary text-white w-32 text-sm mx-2 px-2 py-3 rounded-tl-md rounded-br-md rounded-tr-xl rounded-bl-xl hover:bg-purple hover:text-white transition-all duration-300"><BiBookmark />Watch List</button>
+                    <button className="flex items-center justify-center bg-primary text-white w-32 text-sm mx-2 px-2 py-3 rounded-tl-md rounded-br-md rounded-tr-xl rounded-bl-xl hover:bg-purple hover:text-white transition-all duration-300"><BiBookmark />Watch List</button> */}
                 </div>
             </div>
         </div>
